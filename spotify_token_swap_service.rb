@@ -197,7 +197,7 @@ module SpotifyTokenSwapService
       json response
     rescue StandardError => e
       status 400
-      json error: e
+      json({ error: e })
     end
 
     # POST /api/refresh_token
@@ -214,10 +214,10 @@ module SpotifyTokenSwapService
       json response
     rescue OpenSSL::Cipher::CipherError
       status 400
-      json error: "invalid refresh_token"
+      json({ error: "invalid refresh_token" })
     rescue StandardError => e
       status 400
-      json error: e
+      json({ error: e })
     end
   end
 end
