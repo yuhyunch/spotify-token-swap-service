@@ -178,8 +178,8 @@ module SpotifyTokenSwapService
     set :root, File.dirname(__FILE__)
 
     before do
-      headers "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Methods": %w(OPTIONS GET POST)
+      headers "Access-Control-Allow-Origin" => "*",
+              "Access-Control-Allow-Methods" => %w(OPTIONS GET POST)
     end
 
     helpers ConfigHelper
