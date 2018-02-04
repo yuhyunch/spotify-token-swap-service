@@ -295,6 +295,12 @@ Access the console:
 $ bin/console
 ```
 
+Run tests:
+
+```bash
+$ bundle exec rspec
+```
+
 All of the main code exists inside of `spotify_token_swap_service.rb`.
 
 ### Credits
