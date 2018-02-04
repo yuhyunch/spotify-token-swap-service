@@ -4,6 +4,15 @@ require "climate_control"
 module RSpec
   module Helpers
     module EnvironmentVariables
+      def all_environment_variables(&block)
+        environment_variables(%w(
+          SPOTIFY_CLIENT_ID
+          SPOTIFY_CLIENT_SECRET
+          SPOTIFY_CLIENT_CALLBACK_URL
+          ENCRYPTION_SECRET
+        ), &block)
+      end
+
       def environment_variables(variables, &block)
         variables.map!(&:to_sym)
 

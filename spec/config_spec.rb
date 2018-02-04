@@ -5,9 +5,11 @@ RSpec.describe SpotifyTokenSwapService, "::ConfigHelper" do
     include SpotifyTokenSwapService::ConfigHelper
 
     it "uses only one instance of SpotifyTokenSwapService::Config" do
-      a = config.object_id
-      b = config.object_id
-      expect(a).to eq b
+      all_environment_variables do
+        a = config.object_id
+        b = config.object_id
+        expect(a).to eq b
+      end
     end
   end
 end
@@ -33,12 +35,7 @@ RSpec.describe SpotifyTokenSwapService, "::Config" do
 
   context "good environment" do
     it "should be ok if all env variables" do
-      environment_variables(%w(
-        SPOTIFY_CLIENT_ID
-        SPOTIFY_CLIENT_SECRET
-        SPOTIFY_CLIENT_CALLBACK_URL
-        ENCRYPTION_SECRET
-      )) do
+      all_environment_variables do
         config = SpotifyTokenSwapService::Config.clone
 
         expect { config = config.instance }.not_to raise_error
