@@ -2,8 +2,10 @@
 
 # Token Swap Service for Spotify 🔑 ⛓
 
-![](https://img.shields.io/badge/built_by-spotify-1db954.svg?maxAge=2592000)
+[![Built by Spotify](https://img.shields.io/badge/built_by-spotify-1db954.svg?maxAge=2592000)]()
+[![Build Status](https://travis-ci.org/bih/spotify-token-swap-service.svg?branch=master)](https://travis-ci.org/bih/spotify-token-swap-service)
 [![VersionEye](https://img.shields.io/versioneye/d/bih/spotify-token-swap-service.svg)]()
+[![Minimum Ruby Version - 2.3.6](https://img.shields.io/badge/min_ruby_version-2.3.6-CC342D.svg?maxAge=2592000)]()
 
 This is a tiny [Ruby][ruby] service for supporting [Authorization Code Flow][authorization-code-flow] on Spotify integrations with:
 
