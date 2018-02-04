@@ -22,6 +22,9 @@ This is a tiny [Ruby][ruby] service for supporting [Authorization Code Flow][aut
 * [API](#api)
   * [POST /api/token](#post-apitoken)
   * [POST /api/refresh_token](#post-apirefresh_token)
+* [CLI](#cli)
+  * [bin/token](#bintoken)
+  * [bin/refresh_token](#binrefresh_token)
 * [Code Samples](#code-samples)
   * [Objective-C with Spotify iOS SDK](#objective-c-with-spotify-ios-sdk)
   * [Swift](#swift)
@@ -155,6 +158,31 @@ $ bin/refresh_token "[refresh token]"
   "expires_in": 3600,
   "scope": "user-read-private"
 }
+```
+
+## CLI
+
+We have two binaries included, which allows us to test our credentials easily.
+Before running these commands, make sure you have run the following:
+
+```bash
+$ git clone https://github.com/bih/spotify-token-swap-service.git
+$ cd spotify-token-swap-service/
+$ bundle install
+$ cp .sample.env .env
+$ vim .env
+```
+
+### bin/token
+
+```bash
+$ bin/token "[code]"
+```
+
+### bin/refresh_token
+
+```bash
+$ bin/refresh_token "[refresh token]"
 ```
 
 ## Code Samples
