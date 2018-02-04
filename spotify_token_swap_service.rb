@@ -121,7 +121,7 @@ module SpotifyTokenSwapService
 
     def encrypt_refresh_token(refresh_token)
       if config.has_encryption_secret?
-        refresh_token.encrypt(:symmetric, password: config.encryption_secret)
+        refresh_token.encrypt(:symmetric, password: ENV["ENCRYPTION_SECRET"])
       end || refresh_token
     end
   end
@@ -133,12 +133,12 @@ module SpotifyTokenSwapService
   class DecryptParameters < Struct.new(:params)
     include ConfigHelper
 
-    def initialize(_params)
-      self.params = _params.with_indifferent_access
+    def initialize(init_params)
+      self.params = init_params.with_indifferent_access
     end
 
     def refresh_token
-      params[:refresh_token]
+      params[:refresh_token].to_s.gsub("\\n", "\n")
     end
 
     def run
@@ -151,7 +151,7 @@ module SpotifyTokenSwapService
 
     def decrypt_refresh_token(refresh_token)
       if config.has_encryption_secret?
-        refresh_token.decrypt(:symmetric, password: config.encryption_secret)
+        refresh_token.decrypt(:symmetric, password: ENV["ENCRYPTION_SECRET"])
       end || refresh_token
     end
   end
