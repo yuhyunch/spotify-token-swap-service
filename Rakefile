@@ -5,7 +5,7 @@ begin
     t.rspec_opts = "--profile"
   end
 
-  task :default => :spec
+  task default: :spec
 rescue LoadError
   # no rspec available
 end
