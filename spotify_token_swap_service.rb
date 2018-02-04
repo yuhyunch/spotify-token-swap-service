@@ -65,7 +65,7 @@ module SpotifyTokenSwapService
   class HTTP
     include HTTParty,
             ConfigHelper
-    base_uri 'https://accounts.spotify.com'
+    base_uri "https://accounts.spotify.com"
 
     def token(auth_code:)
       options = default_options.deep_merge(query: {
@@ -178,8 +178,8 @@ module SpotifyTokenSwapService
     set :root, File.dirname(__FILE__)
 
     before do
-      headers 'Access-Control-Allow-Origin' => '*',
-              'Access-Control-Allow-Methods' => %w(OPTIONS GET POST)
+      headers "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": %w(OPTIONS GET POST)
     end
 
     helpers ConfigHelper
@@ -190,14 +190,16 @@ module SpotifyTokenSwapService
     # @param code The authorization code sent from accounts.spotify.com
     #
     post "/api/token" do
-      http = HTTP.new.token(auth_code: params[:code])
-      status_code, response = EncryptionMiddleware.new(http).run
+      begin
+        http = HTTP.new.token(auth_code: params[:code])
+        status_code, response = EncryptionMiddleware.new(http).run
 
-      status status_code
-      json response
-    rescue StandardError => e
-      status 400
-      json({ error: e })
+        status status_code
+        json response
+      rescue StandardError => e
+        status 400
+        json error: e
+      end
     end
 
     # POST /api/refresh_token
@@ -206,18 +208,20 @@ module SpotifyTokenSwapService
     # @param refresh_token The refresh token provided from /api/token
     #
     post "/api/refresh_token" do
-      refresh_params = DecryptParameters.new(params).run
-      http = HTTP.new.refresh_token(refresh_token: refresh_params[:refresh_token])
-      status_code, response = EmptyMiddleware.new(http).run
+      begin
+        refresh_params = DecryptParameters.new(params).run
+        http = HTTP.new.refresh_token(refresh_token: refresh_params[:refresh_token])
+        status_code, response = EmptyMiddleware.new(http).run
 
-      status status_code
-      json response
-    rescue OpenSSL::Cipher::CipherError
-      status 400
-      json({ error: "invalid refresh_token" })
-    rescue StandardError => e
-      status 400
-      json({ error: e })
+        status status_code
+        json response
+      rescue OpenSSL::Cipher::CipherError
+        status 400
+        json error: "invalid refresh_token"
+      rescue StandardError => e
+        status 400
+        json error: e
+      end
     end
   end
 end
