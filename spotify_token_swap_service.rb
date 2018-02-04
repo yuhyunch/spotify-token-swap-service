@@ -5,6 +5,7 @@ require "dotenv/load" if File.exists?(".env")
 require "active_support/all"
 require "base64"
 require "encrypted_strings"
+require "singleton"
 require "httparty"
 
 module SpotifyTokenSwapService
