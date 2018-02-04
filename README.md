@@ -2,6 +2,9 @@
 
 # Token Swap Service for Spotify 🔑 ⛓
 
+![](https://img.shields.io/badge/built_by-spotify-1db954.svg?maxAge=2592000)
+[![VersionEye](https://img.shields.io/versioneye/d/bih/spotify-token-swap-service.svg)]()
+
 This is a tiny [Ruby][ruby] service for supporting [Authorization Code Flow][authorization-code-flow] on Spotify integrations with:
 
 * iOS Apps
@@ -17,8 +20,8 @@ This is a tiny [Ruby][ruby] service for supporting [Authorization Code Flow][aut
 * [How It Works](#how-it-works)
 * [Configuration](#configuration)
 * [API](#api)
-  * [POST /api/token](#post-api-token)
-  * [POST /api/refresh_token](#post-api-refresh-token)
+  * [POST /api/token](#post-apitoken)
+  * [POST /api/refresh_token](#post-apirefresh_token)
 * [Code Samples](#code-samples)
   * [Objective-C with Spotify iOS SDK](#objective-c-with-spotify-ios-sdk)
   * [Swift](#swift)
@@ -28,6 +31,7 @@ This is a tiny [Ruby][ruby] service for supporting [Authorization Code Flow][aut
   * [Token Swap Service](#token-swap-service)
   * [Spotify Accounts API](#spotify-accounts-api)
 * [Contributing](#contributing)
+  * [Credits](#credits)
 
 ## Intro
 
@@ -264,6 +268,10 @@ $ bin/console
 ```
 
 All of the main code exists inside of `spotify_token_swap_service.rb`.
+
+### Credits
+
+This project was built from [SpotifyTokenSwap](https://github.com/simontaen/SpotifyTokenSwap) by @simontaen in 2014, and the encryption of refresh tokens was taken from their work.
 
 [code-of-conduct]: https://github.com/spotify/code-of-conduct/blob/master/code-of-conduct.md
 [ruby]: https://ruby-lang.org
