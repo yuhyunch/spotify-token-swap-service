@@ -298,7 +298,7 @@ $ bin/console
 Run tests:
 
 ```bash
-$ bundle exec rspec
+$ bundle exec rspec --profile -- spec/*
 ```
 
 All of the main code exists inside of `spotify_token_swap_service.rb`.
