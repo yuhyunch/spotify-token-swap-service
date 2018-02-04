@@ -59,12 +59,7 @@ RSpec.describe SpotifyTokenSwapService, "::Config" do
     end
 
     it "should have valid property-assignment" do
-      ClimateControl.modify({
-        "SPOTIFY_CLIENT_ID": "sample-client-id",
-        "SPOTIFY_CLIENT_SECRET": "sample-client-secret",
-        "SPOTIFY_CLIENT_CALLBACK_URL": "sample-client-callback-url://",
-        "ENCRYPTION_SECRET": "|NwDQ-R1J,:1ct^@m+[s&C(k}2g]g+T|AuPXz07AT7jB oFjk|tCY+|/|Y:u[Er8"
-      }) do
+      all_environment_variables do
         config = SpotifyTokenSwapService::Config.clone.instance
 
         expect(config.client_id).to eq "sample-client-id"
