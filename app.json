@@ -8,18 +8,18 @@
     "SPOTIFY_CLIENT_ID": {
       "description":
         "Client ID of your Spotify application. Find it at https://beta.developer.spotify.com/dashboard",
-      "required": true
+      "required": false
     },
     "SPOTIFY_CLIENT_SECRET": {
       "description":
         "Client Secret of your Spotify application. Find it at https://beta.developer.spotify.com/dashboard",
-      "required": true
+      "required": false
     },
     "SPOTIFY_CLIENT_CALLBACK_URL": {
       "description":
         "A registered callback URL for your Spotify application. Register a callback in 'Edit Settings' at https://beta.developer.spotify.com/dashboard",
       "value": "yourapplication://",
-      "required": true
+      "required": false
     },
     "ENCRYPTION_SECRET": {
       "description": "A secret key for additional security of refresh tokens.",
